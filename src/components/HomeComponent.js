@@ -1,30 +1,34 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, Button, Row, Col } from 'reactstrap';
+import { Card, CardSubtitle, CardImg, CardText, CardLink, CardBody, CardTitle, Button, Row, Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
-
-const Home = (props) => {
+const Home = ({ personalInfo }) => {
     return (
         <div className='container'>
             <Card className="col-12 col-md-12">
-                <CardTitle>John Doe</CardTitle>
+                <CardTitle><h4>{personalInfo.name}</h4></CardTitle>
+                <CardSubtitle>{personalInfo.profession}</CardSubtitle>
                 <CardBody>
                     <Row>
-                        <Col md="9">
+                        <Col md="8">
+                            <p> {personalInfo.description} </p>
+                            <p>Email: {personalInfo.email}</p>
+
                             <p>sdasidsa</p>
                             <p>sdasidsa</p>
-                            <p>sdasidsa</p>
-                            <p>sdasidsa</p>
+                            <Button>Download CV</Button>
+                            <Button><Link to='/projects'>Check Projects</Link></Button>
+                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+                            <CardLink href="#">Card Link</CardLink>
+                            <CardLink href="#"><Link to='/projects'>Check Projects</Link></CardLink>
                         </Col>
-                        <Col md="3">
-                            <img src="/images/sample.jpg"></img>
+                        <Col md="4">
+                            <CardImg right src={personalInfo.photo} width="100%"></CardImg>
                         </Col>
-                    </Row>
-                    <Row>
-                        <Button>Download CV</Button>
-                        <Button>Check Projects</Button>
                     </Row>
 
                 </CardBody>
+
 
             </Card>
 

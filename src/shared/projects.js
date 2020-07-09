@@ -5,7 +5,7 @@ export const PROJECTS =
             name: "project 1",
             description: "description of project",
             date: "2012 - 2016",
-            photos: ["assets/images/cake.jpg", "assets/images/sample.jpg"],
+            photos: ["/assets/images/cake.jpg", "/assets/images/sample.jpg"],
             longDescription: "longer description.Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
             tags: ["Angular Material", "Angular", "Typescript"],
             link: "http://google.com"
@@ -25,7 +25,7 @@ export const PROJECTS =
             name: "project 3",
             description: "description of project",
             date: "2012 - 2016",
-            photos: ["assets/images/sample.jpg"],
+            photos: ["/assets/images/sample.jpg"],
             longDescription: "longer description. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
             tags: ["Bootstrap", "Angular", "Typescript"],
             link: "http://google.com"
@@ -35,7 +35,7 @@ export const PROJECTS =
             name: "project 4",
             description: "description of project. ",
             date: "2012 - 2016",
-            photos: ["assets/images/sample.jpg"],
+            photos: ["/assets/images/sample.jpg"],
             longDescription: "longer description. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
             tags: ["C++", "Angular", "Typescript"],
             link: "http://google.com"

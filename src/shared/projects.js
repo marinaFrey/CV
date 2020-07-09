@@ -15,7 +15,7 @@ export const PROJECTS =
             name: "project 2",
             description: "description of project",
             date: "2012 - 2016",
-            photos: ["assets/images/wow.png"],
+            photos: ["/assets/images/wow.png"],
             longDescription: "longer description.Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
             tags: ["Bootstrap", "React", "Javascript"],
             link: "http://google.com"

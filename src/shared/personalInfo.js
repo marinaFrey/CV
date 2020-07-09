@@ -5,7 +5,7 @@ export const PERSONAL_INFO = {
     email: "john@doe.com",
     skype: "skype.tag",
     location: "city, country",
-    githubUrl: "",
-    LinkedInUrl: "",
+    githubUrl: "http://google.com",
+    linkedInUrl: "http://google.com",
     photo: "assets/images/sample.jpg"
 }

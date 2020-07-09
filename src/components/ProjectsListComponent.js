@@ -3,6 +3,7 @@ import { Card, Col, Row, Button, CardTitle, Badge } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
+import WorkIcon from '@material-ui/icons/Work';
 
 const Tag = ({ tagName, isActive, selectTag}) => {
     var color = "dark";
@@ -20,6 +21,7 @@ const TimelineElement = ({ project }) => {
             contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
             contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
             date={project.date}
+            icon={<WorkIcon />}
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}>
             {tags}
             <h3 className="vertical-timeline-element-title">{project.name}</h3>
@@ -99,7 +101,7 @@ class ProjectsList extends Component {
                             <p> Click on the technologies below to only show related projects </p>
                             {tagsElements}
                             <br></br>
-                            <Button color="dark" className="m-1"><Link to={"/projects"}>Back</Link></Button>
+                            <Button color="dark" className="m-1"><Link to={"/home"}>Back</Link></Button>
                         </Col>
                     </Row>
                 </Card>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    Card, CardTitle, Row, Col, CardImg, Button, 
+    Card, CardTitle, Row, Col, Button, 
     Carousel,
     CarouselItem,
     CarouselControl,
@@ -55,7 +55,7 @@ class PhotoCarousel extends Component {
                     onExited={this.onExited}
                     key={index}
                 >
-                    <img src={photo} alt={photo} />
+                    <img src={`${process.env.PUBLIC_URL}/${photo} `} alt={photo} />
                     <CarouselCaption captionText={photo} captionHeader={photo} />
                 </CarouselItem>
             );
@@ -91,7 +91,7 @@ const ProjectDetail = ({ project }) => {
                         <PhotoCarousel photos={project.photos}/>
                         <h4>About</h4>
                         <p> {project.longDescription} </p>
-                        <Button color="dark" className="m-1"><Link to={"/projects"}>Back</Link></Button>
+                        <Button color="dark" className="m-1"><Link to={`${process.env.PUBLIC_URL}/projects`}>Back</Link></Button>
                     </Col>
                 </Row>
             </Card>

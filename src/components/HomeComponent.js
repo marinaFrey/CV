@@ -10,7 +10,6 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import YouTubeIcon from '@material-ui/icons/YouTube';
-import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 
@@ -31,7 +30,7 @@ const Home = ({ personalInfo, experiences }) => {
         <div className='container'>
             <Card className="col-12 col-md-12">
                 <Row>
-                    <Col md="8" className="p-4">
+                    <Col md="7" className="p-4">
                         <CardTitle><h4>{personalInfo.name}</h4></CardTitle>
                         <CardSubtitle>{personalInfo.profession}</CardSubtitle>
                         <br />
@@ -43,20 +42,19 @@ const Home = ({ personalInfo, experiences }) => {
                         <Row className="p-3">
                             <SocialMediaIcons icon={<GitHubIcon />} link={personalInfo.githubUrl} />
                             <SocialMediaIcons icon={<LinkedInIcon />} link={personalInfo.linkedInUrl} />
-                            <SocialMediaIcons icon={<YouTubeIcon />} link={personalInfo.linkedInUrl} />
-                            <SocialMediaIcons icon={<TwitterIcon />} link={personalInfo.linkedInUrl} />
-                            <SocialMediaIcons icon={<InstagramIcon />} link={personalInfo.linkedInUrl} />
-                            <SocialMediaIcons icon={<FacebookIcon />} link={personalInfo.linkedInUrl} />
+                            <SocialMediaIcons icon={<YouTubeIcon />} link={personalInfo.youtubeUrl} />
+                            <SocialMediaIcons icon={<InstagramIcon />} link={personalInfo.instagramUrl} />
+                            <SocialMediaIcons icon={<FacebookIcon />} link={personalInfo.facebookUrl} />
                         </Row>
                         <Row className="p-3">
                             <CardLink href="#">Download CV</CardLink>
-                            <CardLink href="#"><Link to='/projects'>Check Projects</Link></CardLink>
+                            <CardLink href="#"><Link to={`${process.env.PUBLIC_URL}/projects`}>Check Projects</Link></CardLink>
                         </Row>
 
 
                     </Col>
-                    <Col md="4" className="p-0" >
-                        <CardImg src={personalInfo.photo} width="100%"></CardImg>
+                    <Col md="5" className="p-0" >
+                        <CardImg src={`${process.env.PUBLIC_URL}/${personalInfo.photo} `} width="100%"></CardImg>
                     </Col>
                 </Row>
             </Card>

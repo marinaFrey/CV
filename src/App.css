@@ -1,3 +1,7 @@
 .imgHolder {
   padding-right: 0%;
 }
+
+.clickable {
+  cursor: pointer;
+}

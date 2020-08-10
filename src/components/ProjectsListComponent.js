@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Col, Row, Button, CardTitle, Badge } from 'reactstrap';
+import { Card, CardLink , Col, Row, Button, CardTitle, Badge } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
@@ -43,6 +43,25 @@ const TimelineElement = ({ project }) => {
             date={project.date}
             icon={<Icon icon={project.icon} />}
             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}>
+            {tags}
+            <h3 className="vertical-timeline-element-title">{project.name}</h3>
+            <p> {project.description} </p>
+            <ProjectPageButton link={project.link} />
+            <Button color="dark" style={{ float: 'right' }} className="m-1"><Link to={`${process.env.PUBLIC_URL}/projects/${project.id}`}>More Details</Link></Button>
+        </VerticalTimelineElement>
+    );
+}
+
+const Element = ({ project, color, icon }) => {
+    const tags = project.tags.map((tag, index) => <Tag key={index} tagName={tag} />)
+    return (
+        <VerticalTimelineElement
+            className="vertical-timeline-element--work"
+            contentStyle={{ background: color, color: '#fff' }}
+            contentArrowStyle={{ borderRight: '7px solid ' + color  }}
+            date={project.date}
+            icon={icon}
+            iconStyle={{ background: color, color: '#fff' }}>
             {tags}
             <h3 className="vertical-timeline-element-title">{project.name}</h3>
             <p> {project.description} </p>
@@ -99,9 +118,17 @@ class ProjectsList extends Component {
             });
             var isActive = tags.map((tag) => tag.isActive).indexOf(true);
             if (isActive !== -1) {
-                return (
-                    <TimelineElement key={project.id} project={project} />
-                );
+                if(project.type === 'job') {
+                    return (
+                        <Element key={project.id} project={project} color="rgb(33, 150, 243)" icon={<WorkIcon />} />
+                    );
+                }
+                else {
+                    return (
+                        <Element key={project.id} project={project} color="rgb(233, 30, 99)" icon={<HomeIcon />} />
+                    );
+                }
+                
             }
             return <div></div>;
         });
@@ -118,10 +145,10 @@ class ProjectsList extends Component {
                     <Row>
                         <Col md="12" className="p-4">
                             <CardTitle><h4>My Projects</h4></CardTitle>
-                            <p> Click on the technologies below to only show related projects </p>
+                            <p> Click on the technologies below to only show related projects. </p>
                             {tagsElements}
-                            <br></br>
-                            <Button color="dark" className="m-1"><Link to={"/home"}>Back</Link></Button>
+                            <br></br><br></br>
+                            <CardLink href="#"><Link to={"/home"}>Back</Link></CardLink>
                         </Col>
                     </Row>
                 </Card>

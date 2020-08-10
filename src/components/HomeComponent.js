@@ -6,6 +6,7 @@ import Experiences from './VerticalTimelineComponent';
 import EmailIcon from '@material-ui/icons/Email';
 import CallIcon from '@material-ui/icons/Call';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import TranslateIcon from '@material-ui/icons/Translate';
 
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
@@ -15,7 +16,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 
 const Info = ({ icon, text, info }) => {
     return (
-        <p>{icon} {text}: {info}</p>
+        <p>{icon} <b>{text}:</b> {info}</p>
     );
 }
 
@@ -37,6 +38,7 @@ const Home = ({ personalInfo, experiences }) => {
                         <Info icon={<EmailIcon />} text="Email" info={personalInfo.email} />
                         <Info icon={<CallIcon />} text="Skype" info={personalInfo.skype} />
                         <Info icon={<LocationOnIcon />} text="Location" info={personalInfo.location} />
+                        <Info icon={<TranslateIcon />} text="Languages" info={personalInfo.languages} />
                         <br />
                         <p> {personalInfo.description} </p>
                         <Row className="p-3">

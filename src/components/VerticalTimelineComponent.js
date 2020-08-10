@@ -4,30 +4,30 @@ import 'react-vertical-timeline-component/style.min.css';
 import SchoolIcon from '@material-ui/icons/School';
 import WorkIcon from '@material-ui/icons/Work';
 
-const Icon = ({icon}) => {
-    if(icon === 'job') {
-        return ( <WorkIcon/>)
-    }
-    if(icon === 'education') {
-        return (<SchoolIcon />)
-    }
-    return (<div></div>)
-}
-
-const TimelineElement = ({ experience }) => {
+const Element = ({ experience, color, icon }) => {
     return (
         <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-            contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
+            contentStyle={{ background: color, color: '#fff' }}
+            contentArrowStyle={{ borderRight: '7px solid ' + color }}
             date={experience.date}
-            icon={<Icon icon={experience.icon} />}
-            iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}>
+            icon={icon}
+            iconStyle={{ background: color, color: '#fff' }}>
             <h3 className="vertical-timeline-element-title">{experience.name}</h3>
             <h4 className="vertical-timeline-element-subtitle">{experience.location}</h4>
             <p> {experience.description} </p>
         </VerticalTimelineElement>
     );
+}
+
+const TimelineElement = ({ experience }) => {
+    if (experience.type === 'job') {
+        return (<Element experience={experience} color="rgb(33, 150, 243)" icon={<WorkIcon />} />)
+    }
+    if (experience.type === 'education') {
+        return (<Element experience={experience} color="rgb(233, 30, 99)" icon={<SchoolIcon />} />)
+    }
+    return (<div></div>)
 }
 
 const Experiences = ({experiences}) => {

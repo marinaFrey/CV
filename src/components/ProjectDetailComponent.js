@@ -55,8 +55,8 @@ class PhotoCarousel extends Component {
                     onExited={this.onExited}
                     key={index}
                 >
-                    <img src={`${process.env.PUBLIC_URL}/${photo} `} alt={photo} />
-                    <CarouselCaption captionText={photo} captionHeader={photo} />
+                    <img src={`${process.env.PUBLIC_URL}/${photo} `} alt={photo} width="100%" />
+                    <CarouselCaption captionText="" captionHeader="" />
                 </CarouselItem>
             );
         });

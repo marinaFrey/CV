@@ -14,7 +14,7 @@ const Element = ({ experience, color, icon }) => {
             icon={icon}
             iconStyle={{ background: color, color: '#fff' }}>
             <h3 className="vertical-timeline-element-title">{experience.name}</h3>
-            <h4 className="vertical-timeline-element-subtitle">{experience.location}</h4>
+            <h6 className="vertical-timeline-element-subtitle">{experience.location}</h6>
             <p> {experience.description} </p>
         </VerticalTimelineElement>
     );

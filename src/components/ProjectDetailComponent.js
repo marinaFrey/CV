@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import {
-    Card, CardTitle, Row, Col, Button, 
+    Card, CardLink, CardTitle, Row, Col, Button, 
     Carousel,
     CarouselItem,
     CarouselControl,
     CarouselIndicators,
     CarouselCaption } from 'reactstrap';
-import { Link } from 'react-router-dom';
 
 class PhotoCarousel extends Component {
     constructor(props) {
@@ -77,7 +76,6 @@ class PhotoCarousel extends Component {
 }
 
 const ProjectDetail = ({ project }) => {
-    console.log(project.photos);
     return (
         <div className="container">
             <Card className="col-12 col-md-12">
@@ -85,13 +83,14 @@ const ProjectDetail = ({ project }) => {
                     <Col md="12" className="p-4">
                         <Row className="p-3">
                             <CardTitle><h1>{project.name}</h1></CardTitle>
-                            <Button color="primary"  className="m-2" href={project.link}>Link to Project Page</Button>
+                            <Button color="primary" className="m-3" style={{ float: 'right' }} href={project.link} target="_blank"
+                                rel="noopener noreferrer">Link to Project Page</Button>
                         </Row>
                         <p>{project.date}</p>
                         <PhotoCarousel photos={project.photos}/>
                         <h4>About</h4>
                         <p> {project.longDescription} </p>
-                        <Button color="dark" className="m-1"><Link to={`${process.env.PUBLIC_URL}/projects`}>Back</Link></Button>
+                        <CardLink href={`${process.env.PUBLIC_URL}/projects`}>Back</CardLink>
                     </Col>
                 </Row>
             </Card>

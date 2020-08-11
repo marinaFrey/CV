@@ -1,7 +1,7 @@
 export const PERSONAL_INFO = {
     name: "Marina Fortes Rey",
     profession: "Software Developer",
-    description: "Software developer with a passion for data visualization and user experience. Experience working with clients of different backgrounds and fields of study.",
+    description: "Software developer with a passion for data visualization. Experience working with clients of different backgrounds and fields of study.",
     email: "marina.fortes.rey@gmail.com",
     skype: "marina.rey21",
     location: "Porto Alegre, Brazil",

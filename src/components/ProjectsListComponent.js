@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Card, CardLink , Col, Row, Button, CardTitle, Badge } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import WorkIcon from '@material-ui/icons/Work';
@@ -10,55 +9,27 @@ const Tag = ({ tagName, isActive, selectTag}) => {
     var color = "dark";
     if(isActive === false) color = "light";
     return (
-        <Badge color={color} className="p-2 m-1 clickable" pill onClick={selectTag} >{tagName}</Badge>
+        <Badge key={tagName} color={color} className="p-2 m-1 clickable" pill onClick={selectTag} >{tagName}</Badge>
     );
-}
-
-const Icon = ({ icon }) => {
-    if (icon === 'job') {
-        return (<WorkIcon />)
-    }
-    if (icon === 'home') {
-        return (<HomeIcon />)
-    }
-    return (<div></div>)
 }
 
 const ProjectPageButton = ({link}) => {
     if(link !== null) {
-        return <Button color="primary" style={{ float: 'right' }} className="m-1" href={link}>Link to Project Page</Button>
+        return <Button color="primary" style={{ float: 'right' }} className="m-1" href={link} 
+        target="_blank" rel="noopener noreferrer">Link to Project Page</Button>
     }
     else {
         return <div></div>
     }
 }
 
-const TimelineElement = ({ project }) => {
-    const tags = project.tags.map((tag, index) => <Tag key={index} tagName={tag} />)
-    return (
-        <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-            contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-            date={project.date}
-            icon={<Icon icon={project.icon} />}
-            iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}>
-            {tags}
-            <h3 className="vertical-timeline-element-title">{project.name}</h3>
-            <p> {project.description} </p>
-            <ProjectPageButton link={project.link} />
-            <Button color="dark" style={{ float: 'right' }} className="m-1"><Link to={`${process.env.PUBLIC_URL}/projects/${project.id}`}>More Details</Link></Button>
-        </VerticalTimelineElement>
-    );
-}
-
 const Element = ({ project, color, icon }) => {
     const tags = project.tags.map((tag, index) => <Tag key={index} tagName={tag} />)
     return (
         <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            contentStyle={{ background: color, color: '#fff' }}
-            contentArrowStyle={{ borderRight: '7px solid ' + color  }}
+            className="vertical-timeline-element--education"
+            contentStyle={{ background: '#fff', color: 'black' }}
+            contentArrowStyle={{ borderRight: '7px solid #fff'  }}
             date={project.date}
             icon={icon}
             iconStyle={{ background: color, color: '#fff' }}>
@@ -66,7 +37,7 @@ const Element = ({ project, color, icon }) => {
             <h3 className="vertical-timeline-element-title">{project.name}</h3>
             <p> {project.description} </p>
             <ProjectPageButton link={project.link} />
-            <Button color="dark" style={{ float: 'right' }} className="m-1"><Link to={`${process.env.PUBLIC_URL}/projects/${project.id}`}>More Details</Link></Button>
+            <Button color="secondary" style={{ float: 'right' }} className="m-1" href={`${process.env.PUBLIC_URL}/projects/${project.id}`}>More Details</Button>
         </VerticalTimelineElement>
     );
 }
@@ -130,7 +101,7 @@ class ProjectsList extends Component {
                 }
                 
             }
-            return <div></div>;
+            return <div key={project.id}></div>;
         });
         return projectElements;
     }
@@ -148,7 +119,7 @@ class ProjectsList extends Component {
                             <p> Click on the technologies below to only show related projects. </p>
                             {tagsElements}
                             <br></br><br></br>
-                            <CardLink href="#"><Link to={"/home"}>Back</Link></CardLink>
+                            <CardLink href={`${process.env.PUBLIC_URL}/home`}>Back</CardLink>
                         </Col>
                     </Row>
                 </Card>

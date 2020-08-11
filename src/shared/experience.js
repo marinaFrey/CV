@@ -4,7 +4,7 @@ export const EXPERIENCE = [
         name: "Full-Stack Web Development with React Specialization",
         description: "The Hong Kong University of Science and Technology",
         date: "August 2020",
-        location: "Coursera",
+        location: "Coursera (online course)",
         type: "education"
     },
     {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, CardSubtitle, CardImg, CardLink, CardTitle, Button, Row, Col } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import '../App.css';
 import Experiences from './VerticalTimelineComponent';
 import EmailIcon from '@material-ui/icons/Email';
@@ -49,8 +48,10 @@ const Home = ({ personalInfo, experiences }) => {
                             <SocialMediaIcons icon={<FacebookIcon />} link={personalInfo.facebookUrl} />
                         </Row>
                         <Row className="p-3">
-                            <CardLink href="#">Download CV</CardLink>
-                            <CardLink href="#"><Link to={`${process.env.PUBLIC_URL}/projects`}>Check Projects</Link></CardLink>
+                            <CardLink href={`${process.env.PUBLIC_URL}/assets/resume_Marina_Fortes_Rey.pdf `} 
+                                        target="_blank"
+                                        rel="noopener noreferrer">Download CV</CardLink>
+                            <CardLink href={`${process.env.PUBLIC_URL}/projects`}>My Projects</CardLink>
                         </Row>
 
 

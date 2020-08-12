@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardSubtitle, CardImg, CardLink, CardTitle, Button, Row, Col } from 'reactstrap';
+import { Link } from "react-router-dom";
 import '../App.css';
 import Experiences from './VerticalTimelineComponent';
 import EmailIcon from '@material-ui/icons/Email';
@@ -51,7 +52,7 @@ const Home = ({ personalInfo, experiences }) => {
                             <CardLink href={`${process.env.PUBLIC_URL}/assets/resume_Marina_Fortes_Rey.pdf `} 
                                         target="_blank"
                                         rel="noopener noreferrer">Download CV</CardLink>
-                            <CardLink href={`${process.env.PUBLIC_URL}/projects`}>My Projects</CardLink>
+                            <CardLink tag={Link} to={`/projects`}>My Projects</CardLink>
                         </Row>
 
 

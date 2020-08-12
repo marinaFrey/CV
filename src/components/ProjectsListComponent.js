@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardLink , Col, Row, Button, CardTitle, Badge } from 'reactstrap';
+import { Link } from "react-router-dom";
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import WorkIcon from '@material-ui/icons/Work';
@@ -37,7 +38,7 @@ const Element = ({ project, color, icon }) => {
             <h3 className="vertical-timeline-element-title">{project.name}</h3>
             <p> {project.description} </p>
             <ProjectPageButton link={project.link} />
-            <Button color="secondary" style={{ float: 'right' }} className="m-1" href={`${process.env.PUBLIC_URL}/projects/${project.id}`}>More Details</Button>
+            <Button color="secondary" style={{ float: 'right' }} className="m-1" tag={Link} to={`/projects/${project.id}`}>More Details</Button>
         </VerticalTimelineElement>
     );
 }
@@ -119,7 +120,7 @@ class ProjectsList extends Component {
                             <p> Click on the technologies below to only show related projects. </p>
                             {tagsElements}
                             <br></br><br></br>
-                            <CardLink href={`${process.env.PUBLIC_URL}/home`}>Back</CardLink>
+                            <CardLink tag={Link} to={`/home`}>Back</CardLink>
                         </Col>
                     </Row>
                 </Card>

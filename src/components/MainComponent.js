@@ -26,10 +26,10 @@ class Main extends Component {
         return (
             <div>
                 <Switch>
-                    <Route path={`${process.env.PUBLIC_URL}/home`}  component={() => <Home personalInfo={this.state.personalInfo} experiences={this.state.experiences}/>} />
-                    <Route exact path={`${process.env.PUBLIC_URL}/projects`} component={() => <ProjectsList projects={this.state.projects} />} />
-                    <Route path={`${process.env.PUBLIC_URL}/projects/:projectId`} component={ProjectWithId} />
-                    <Redirect to={`${process.env.PUBLIC_URL}/home`}  />
+                    <Route path={`/home`}  component={() => <Home personalInfo={this.state.personalInfo} experiences={this.state.experiences}/>} />
+                    <Route exact path={`/projects`} component={() => <ProjectsList projects={this.state.projects} />} />
+                    <Route path={`/projects/:projectId`} component={ProjectWithId} />
+                    <Redirect to={`/home`}  />
                 </Switch>
             </div>
         );

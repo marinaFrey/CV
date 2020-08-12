@@ -6,6 +6,7 @@ import {
     CarouselControl,
     CarouselIndicators,
     CarouselCaption } from 'reactstrap';
+import { Link } from "react-router-dom";
 
 class PhotoCarousel extends Component {
     constructor(props) {
@@ -90,7 +91,7 @@ const ProjectDetail = ({ project }) => {
                         <PhotoCarousel photos={project.photos}/>
                         <h4>About</h4>
                         <p> {project.longDescription} </p>
-                        <CardLink href={`${process.env.PUBLIC_URL}/projects`}>Back</CardLink>
+                        <CardLink tag={Link} to={`/projects`} >Back</CardLink>
                     </Col>
                 </Row>
             </Card>

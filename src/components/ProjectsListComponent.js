@@ -90,11 +90,12 @@ class ProjectsList extends Component {
             this.setState({firstTime: false});
         }
         else {
-            for (let i = 0; i < tags.length; i++) {
-                if (tags[i].tag === tagName) tags[i].isActive = !tags[i].isActive;
-            }
+            let selectedTag = tags.find(t => t.tag == tagName);
+            if(selectedTag)
+                selectedTag.isActive = !selectedTag.isActive;
         }
-        
+        if(!tags.find(t => t.isActive))
+            tags.map(t => t.isActive = true)
         this.setState({allTags: tags});
     }
 

@@ -1,20 +1,38 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'font-awesome/css/font-awesome.min.css';
+import ReactDOM from 'react-dom/client';
 import './index.css';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { ChakraProvider } from '@chakra-ui/react'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+import Home from './components/HomeComponent';
+import ProjectsList from './components/ProjectsListComponent';
+import ProjectDetail, { projectLoader } from './components/ProjectDetailComponent';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/projects",
+    element: <ProjectsList />
+  },
+  {
+    path: "/projects/:projectId",
+    element: <ProjectDetail />,
+    loader: projectLoader,
+  }
+]);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <ChakraProvider>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </ChakraProvider>
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

@@ -1,18 +1,25 @@
 import React from 'react';
-import { Card, CardSubtitle, CardImg, CardLink, CardTitle, Button, Row, Col } from 'reactstrap';
-import { Link } from "react-router-dom";
+import { Card, CardBody, CardFooter, Divider,
+    Text, Button, ButtonGroup, Image, Stack, Heading, Link,
+    Link as ChakraLink, LinkProps,
+    Flex, Spacer  } from '@chakra-ui/react'
+import { Link as ReactRouterLink } from 'react-router-dom'
 import '../App.css';
-import Experiences from './VerticalTimelineComponent';
-import EmailIcon from '@material-ui/icons/Email';
-import CallIcon from '@material-ui/icons/Call';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import TranslateIcon from '@material-ui/icons/Translate';
+import Experiences from '../shared/VerticalTimelineComponent';
+import EmailIcon from '@mui/icons-material/Email';
+import CallIcon from '@mui/icons-material/Call';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import TranslateIcon from '@mui/icons-material/Translate';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import DownloadIcon from '@mui/icons-material/Download';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import YouTubeIcon from '@material-ui/icons/YouTube';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import FacebookIcon from '@material-ui/icons/Facebook';
+import { PERSONAL_INFO } from '../shared/data/personalInfo';
+import { EXPERIENCE } from '../shared/data/experience';
 
 const Info = ({ icon, text, info }) => {
     return (
@@ -22,45 +29,66 @@ const Info = ({ icon, text, info }) => {
 
 const SocialMediaIcons = ({ icon, link }) => {
     return (
-        <Button className="m-2 btn btn-dark btn-circle " color="secondary" size="lg" href={link} >{icon}</Button>
+        <Button >
+            <a href={link} target="_blank" rel="noopener noreferrer">{icon}</a>
+        </Button>
     );
 }
 
-const Home = ({ personalInfo, experiences }) => {
+const Home = () => {
+    var personalInfo = PERSONAL_INFO;
+    var experiences = EXPERIENCE;
     return (
         <div className='container'>
-            <Card className="col-12 col-md-12">
-                <Row>
-                    <Col md="7" className="p-4">
-                        <CardTitle><h4>{personalInfo.name}</h4></CardTitle>
-                        <CardSubtitle>{personalInfo.profession}</CardSubtitle>
-                        <br />
-                        <Info icon={<EmailIcon />} text="Email" info={personalInfo.email} />
-                        <Info icon={<CallIcon />} text="Skype" info={personalInfo.skype} />
-                        <Info icon={<LocationOnIcon />} text="Location" info={personalInfo.location} />
-                        <Info icon={<TranslateIcon />} text="Languages" info={personalInfo.languages} />
-                        <br />
-                        <p> {personalInfo.description} </p>
-                        <Row className="p-3">
-                            <SocialMediaIcons icon={<GitHubIcon />} link={personalInfo.githubUrl} />
-                            <SocialMediaIcons icon={<LinkedInIcon />} link={personalInfo.linkedInUrl} />
-                            <SocialMediaIcons icon={<YouTubeIcon />} link={personalInfo.youtubeUrl} />
-                            <SocialMediaIcons icon={<InstagramIcon />} link={personalInfo.instagramUrl} />
-                            <SocialMediaIcons icon={<FacebookIcon />} link={personalInfo.facebookUrl} />
-                        </Row>
-                        <Row className="p-3">
-                            <CardLink href={`${process.env.PUBLIC_URL}/assets/resume_Marina_Fortes_Rey.pdf `} 
-                                        target="_blank"
-                                        rel="noopener noreferrer">Download CV</CardLink>
-                            <CardLink tag={Link} to={`/projects`}>My Projects</CardLink>
-                        </Row>
+            <Card
+                direction={{ base: 'column', sm: 'row' }}
+                overflow='hidden'
+                >
+                    <Stack>
+                        <CardBody>
+                            <Heading size='md'>{personalInfo.name}</Heading>
 
+                            <Text> {personalInfo.profession}</Text>
 
-                    </Col>
-                    <Col md="5" className="p-0" >
-                        <CardImg src={`${process.env.PUBLIC_URL}/${personalInfo.photo} `} width="100%"></CardImg>
-                    </Col>
-                </Row>
+                            <Info icon={<EmailIcon />} text="Email" info={personalInfo.email} />
+                            <Info icon={<CallIcon />} text="Skype" info={personalInfo.skype} />
+                            <Info icon={<LocationOnIcon />} text="Location" info={personalInfo.location} />
+                            <Info icon={<TranslateIcon />} text="Languages" info={personalInfo.languages} />
+
+                            <Text py='2' > {personalInfo.description} </Text>
+                            <Stack direction='row' spacing={1}>
+                                <SocialMediaIcons icon={<GitHubIcon />} link={personalInfo.githubUrl} />
+                                <SocialMediaIcons icon={<LinkedInIcon />} link={personalInfo.linkedInUrl} />
+                                <SocialMediaIcons icon={<YouTubeIcon />} link={personalInfo.youtubeUrl} />
+                                <SocialMediaIcons icon={<InstagramIcon />} link={personalInfo.instagramUrl} />
+                                <SocialMediaIcons icon={<FacebookIcon />} link={personalInfo.facebookUrl} />
+                            </Stack>
+
+                        </CardBody>
+                        <Divider />
+                        <CardFooter>
+                            <Stack direction='row' spacing={4} align='center'>
+                                
+                                <Button leftIcon={<DownloadIcon />} size='lg' colorScheme='teal' variant='outline'>
+                                    <a href={`${process.env.PUBLIC_URL}/assets/resume_Marina_Fortes_Rey.pdf `}  
+                                        target="_blank" rel="noopener noreferrer">
+                                            Download CV
+                                    </a>
+                                </Button>
+                                <Button as={ReactRouterLink}  to='/projects' size='lg'
+                                    rightIcon={<ArrowForwardIcon />} colorScheme='teal' variant='solid'>
+                                    My Work
+                                </Button>
+                            </Stack>
+                        </CardFooter>
+                    </Stack>
+
+                    <Image
+                        objectFit='cover'
+                        maxW={{ base: '100%', sm: '200px' }}
+                        src={`${process.env.PUBLIC_URL}/${personalInfo.photo} `} 
+                        alt='photo'
+                    />
             </Card>
             <Experiences experiences={experiences} />
         </div>

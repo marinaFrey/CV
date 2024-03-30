@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Card, CardBody, CardFooter, Divider, Tag as ChakraTag,
-    Text, Button, Stack, Heading, Wrap,
-    Link as ChakraLink } from '@chakra-ui/react'
+import { Card, CardBody, Divider, Tag as ChakraTag,
+    Text, Button, Stack, Heading, Wrap } from '@chakra-ui/react'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
@@ -11,6 +10,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 import ProjectPageButton from '../shared/ProjectPageButtonComponent';
 import { PROJECTS } from '../shared/data/projects';
+import { educationExperienceColor, workExperienceColor } from '../shared/colors';
 
 const Tag = ({ tagName, isActive, selectTag}) => {
     var variant = "solid";
@@ -22,14 +22,16 @@ const Tag = ({ tagName, isActive, selectTag}) => {
 
 const Element = ({ project, color, icon }) => {
     const tags = project.tags.map((tag, index) => <Tag key={index} tagName={tag} />)
+    const textColor = 'black';
+    const backgroundColor = 'white';
     return (
         <VerticalTimelineElement
             className="vertical-timeline-element--education"
-            contentStyle={{ background: '#fff', color: 'black' }}
-            contentArrowStyle={{ borderRight: '7px solid #fff'  }}
+            contentStyle={{ background: backgroundColor, color: textColor }}
+            contentArrowStyle={{ borderRight: '7px solid ' + backgroundColor }}
             date={project.date}
             icon={icon}
-            iconStyle={{ background: color, color: '#fff' }}>
+            iconStyle={{ background: color, color: backgroundColor }}>
             <Stack>
                 <Wrap spacing={1}>
                     {tags}
@@ -105,12 +107,12 @@ class ProjectsList extends Component {
             if (isActive !== -1) {
                 if(project.type === 'job') {
                     return (
-                        <Element key={project.id} project={project} color="rgb(33, 150, 243)" icon={<WorkIcon />} />
+                        <Element key={project.id} project={project} color={workExperienceColor} icon={<WorkIcon />} />
                     );
                 }
                 else {
                     return (
-                        <Element key={project.id} project={project} color="rgb(233, 30, 99)" icon={<HomeIcon />} />
+                        <Element key={project.id} project={project} color={educationExperienceColor} icon={<HomeIcon />} />
                     );
                 }
                 

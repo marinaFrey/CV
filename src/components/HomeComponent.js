@@ -1,14 +1,11 @@
 import React from 'react';
 import { Card, CardBody, CardFooter, Divider,
-    Text, Button, ButtonGroup, Image, Stack, Heading, Link,
-    Link as ChakraLink, LinkProps,
-    Flex, Spacer  } from '@chakra-ui/react'
+    Text, Button, Image, Stack, Heading, Spacer  } from '@chakra-ui/react'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import '../App.css';
 import Experiences from '../shared/VerticalTimelineComponent';
-import EmailIcon from '@mui/icons-material/Email';
-import CallIcon from '@mui/icons-material/Call';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import TranslateIcon from '@mui/icons-material/Translate';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -41,22 +38,39 @@ const Home = () => {
     return (
         <div className='container'>
             <Card
-                direction={{ base: 'column', sm: 'row' }}
-                overflow='hidden'
+                direction={{ base: 'column', md: 'row' }}
+                overflow="hidden"
                 >
                     <Stack>
                         <CardBody>
-                            <Heading size='md'>{personalInfo.name}</Heading>
+                            <Stack  direction={{ base: 'column', sm: 'row' }}>
+                                <Stack>
+                                    <Heading >{personalInfo.name}</Heading>
 
-                            <Text> {personalInfo.profession}</Text>
+                                    <Text> {personalInfo.profession}</Text>
 
-                            <Info icon={<EmailIcon />} text="Email" info={personalInfo.email} />
-                            <Info icon={<CallIcon />} text="Skype" info={personalInfo.skype} />
-                            <Info icon={<LocationOnIcon />} text="Location" info={personalInfo.location} />
-                            <Info icon={<TranslateIcon />} text="Languages" info={personalInfo.languages} />
+                                    <Info icon={<EmailOutlinedIcon />} text="Email" info={personalInfo.email} />
+                                    <Info icon={<FmdGoodOutlinedIcon />} text="Location" info={personalInfo.location} />
+                                    <Info icon={<TranslateIcon />} text="Languages" info={personalInfo.languages} />
 
+                                </Stack>
+                                <Spacer />
+                                <Image
+                                    display={{base: 'none', md: 'flex'}}
+                                    borderRadius='full'
+                                    objectFit='cover'
+                                    boxSize='250px'
+                                    maxW={{ base: '100%', md: "100%"}}
+                                    maxH={{base: '100%'}}
+                                    justify="content-center"
+                                    align="self-center"
+                                    src={`${process.env.PUBLIC_URL}/${personalInfo.photo} `} 
+                                    alt='photo'
+                                />
+                            </Stack>
+                            
                             <Text py='2' > {personalInfo.description} </Text>
-                            <Stack direction='row' spacing={1}>
+                            <Stack direction='row' spacing={4}>
                                 <SocialMediaIcons icon={<GitHubIcon />} link={personalInfo.githubUrl} />
                                 <SocialMediaIcons icon={<LinkedInIcon />} link={personalInfo.linkedInUrl} />
                                 <SocialMediaIcons icon={<YouTubeIcon />} link={personalInfo.youtubeUrl} />
@@ -83,12 +97,7 @@ const Home = () => {
                         </CardFooter>
                     </Stack>
 
-                    <Image
-                        objectFit='cover'
-                        maxW={{ base: '100%', sm: '200px' }}
-                        src={`${process.env.PUBLIC_URL}/${personalInfo.photo} `} 
-                        alt='photo'
-                    />
+                    
             </Card>
             <Experiences experiences={experiences} />
         </div>

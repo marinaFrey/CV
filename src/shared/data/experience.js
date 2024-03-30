@@ -1,5 +1,21 @@
 export const EXPERIENCE = [
     {
+        id: 7,
+        name: "Technical Lead",
+        description: "Led a culturally diverse team responsible for talent acquisition platforms using Angular and .NET Core 6. Increased applicant acquisition rate by 319% by automating HR interviews. Helped define and implement new architecture and domain for brand-new products.",
+        date: "Sept 2021 - Present",
+        location: "BairesDev - Remote",
+        type: "job"
+    },
+    {
+        id: 7,
+        name: "Software Developer",
+        description: "Developed banking system with Angular front-end and .NET Core back-end. Worked directly with clients in their native language (Spanish) using agile methodologies. Developed modular Angular libraries in order to standardize UI elements between applications",
+        date: "Sept 2020 - Sept 2021",
+        location: "Poatek",
+        type: "job"
+    },
+    {
         id: 0,
         name: "Full-Stack Web Development with React Specialization",
         description: "The Hong Kong University of Science and Technology",

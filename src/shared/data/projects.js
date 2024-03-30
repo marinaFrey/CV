@@ -1,6 +1,17 @@
 export const PROJECTS = 
     [
         {
+            id: 6,
+            name: "Miss Fisher's Murder Mysteries Visualization Tool",
+            description: "Personal project of collecting and visualizing data from the Australian TV Series Miss Fisher's Muder Mysteries.",
+            date: "2020",
+            photos: ["assets/images/missfisher/characters-viz.png", "assets/images/missfisher/ties-viz.png", "assets/images/missfisher/murders-viz.png"],
+            longDescription: "Personal project of collecting and visualizing data from the Australian TV Series Miss Fisher's Muder Mysteries. Each visualization was designed to better analyse each data interactively.",
+            tags: ["Typescript","Angular", "D3"],
+            link: "https://miss-fisher-data-visualization.vercel.app",
+            type: "home"
+        },
+        {
             id: 0,
             name: "Democratic Lunch",
             description: "Website for polling desired lunch options of the day. Simple interface in Angular with RESTful API in Nodejs.",

@@ -3,16 +3,19 @@ import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeli
 import 'react-vertical-timeline-component/style.min.css';
 import SchoolIcon from '@mui/icons-material/School';
 import WorkIcon from '@mui/icons-material/Work';
+import { educationExperienceColor, workExperienceColor } from './colors';
 
 const Element = ({ experience, color, icon }) => {
+    const textColor = 'black';
+    const backgroundColor = 'white';
     return (
         <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: color, color: '#fff' }}
-            contentArrowStyle={{ borderRight: '7px solid ' + color }}
+            contentStyle={{ background: backgroundColor, color: textColor }}
+            contentArrowStyle={{ borderRight: '7px solid ' + backgroundColor }}
             date={experience.date}
             icon={icon}
-            iconStyle={{ background: color, color: '#fff' }}>
+            iconStyle={{ background: color, color: backgroundColor }}>
             <h3 className="vertical-timeline-element-title">{experience.name}</h3>
             <h6 className="vertical-timeline-element-subtitle">{experience.location}</h6>
             <p> {experience.description} </p>
@@ -22,10 +25,10 @@ const Element = ({ experience, color, icon }) => {
 
 const TimelineElement = ({ experience }) => {
     if (experience.type === 'job') {
-        return (<Element experience={experience} color="rgb(33, 150, 243)" icon={<WorkIcon />} />)
+        return (<Element experience={experience} color={workExperienceColor} icon={<WorkIcon />} />)
     }
     if (experience.type === 'education') {
-        return (<Element experience={experience} color="rgb(233, 30, 99)" icon={<SchoolIcon />} />)
+        return (<Element experience={experience} color={educationExperienceColor} icon={<SchoolIcon />} />)
     }
     return (<div></div>)
 }
